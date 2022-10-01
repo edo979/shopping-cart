@@ -34,7 +34,10 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemsProps) {
 
         <div className="mt-auto">
           {quantity === 0 ? (
-            <Button className="w-100"> + Add to chart</Button>
+            <Button className="w-100" onClick={() => increaseCartQuantity(id)}>
+              {' '}
+              + Add to chart
+            </Button>
           ) : (
             <div
               className="d-flex flex-column align-items-center"
@@ -44,13 +47,17 @@ export function StoreItem({ id, name, price, imgUrl }: StoreItemsProps) {
                 className="d-flex justify-content-center"
                 style={{ gap: '0.5rem' }}
               >
-                <Button>-</Button>
+                <Button onClick={() => decreaseCartQuantity(id)}>-</Button>
                 <div>
                   <span className="fs-3">{quantity}</span>in chart
                 </div>
-                <Button>+</Button>
+                <Button onClick={() => increaseCartQuantity(id)}>+</Button>
               </div>
-              <Button variant="danger" size="sm">
+              <Button
+                variant="danger"
+                size="sm"
+                onClick={() => removeFromCart(id)}
+              >
                 Remove
               </Button>
             </div>
