@@ -6,7 +6,7 @@ export function Navbar() {
   const { openCart, cartQuantity } = useShoppingCart()
 
   return (
-    <NavbarBs sticky="top" className="bg-white shadow-sm mb-3">
+    <NavbarBs sticky="top" className="navbar-dark bg-primary shadow-sm mb-3">
       <Container>
         <Nav className="me-auto">
           <Nav.Link to="/" as={NavLink}>
@@ -23,7 +23,7 @@ export function Navbar() {
           <Button
             onClick={openCart}
             style={{ width: '3rem', height: '3rem', position: 'relative' }}
-            variant="outline-primary"
+            variant="outline-secondary"
             className="rounded-circle"
           >
             <svg
