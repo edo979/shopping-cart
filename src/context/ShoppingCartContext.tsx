@@ -29,18 +29,18 @@ export function ShoppingCartProvider({ children }: ShoppingCartProviderProps) {
     cartItems.find((item) => item.id === id)?.quantity || 0
 
   const increaseCartQuantity = (id: number) => {
-    if (cartItems.find((item) => item.id === id) == null) {
-      return setCartItems((prev) => [...prev, { id, quantity: 1 }])
-    } else {
-      setCartItems((prev) =>
-        prev.map((item) => {
+    setCartItems((currentItems) => {
+      if (currentItems.find((item) => item.id === id) == null) {
+        return [...currentItems, { id, quantity: 1 }]
+      } else {
+        return currentItems.map((item) => {
           if (item.id === id) {
             return { ...item, quantity: item.quantity + 1 }
           }
           return item
         })
-      )
-    }
+      }
+    })
   }
 
   const decreaseCartQuantity = (id: number) => {
